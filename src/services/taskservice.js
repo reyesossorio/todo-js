@@ -10,7 +10,7 @@ class TaskService {
     // Create and store a new task
     addTask(title, description) {
         const id = this.generateId();
-        const newTask = new Task(id, title, description, new Date());
+        const newTask = new Task(id, title, description);
         this.tasks.set(id, newTask);
         return newTask;
     }
@@ -30,7 +30,7 @@ class TaskService {
     }
 
     // Update an existing task
-    updateTask(taskId, title, description) {
+    updateTask(taskId, title, description, status) {
         // 1. Find task in Map
         // 2. Update task properties
         // 3. Return updated task
@@ -43,6 +43,9 @@ class TaskService {
         }
         if (description) {
             task.description = description;
+        }
+        if (status) {
+            task.status = status;
         }
         console.log(task);
         this.tasks.set(taskId, task); //adds or updates
