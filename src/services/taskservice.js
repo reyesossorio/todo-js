@@ -46,19 +46,15 @@ class TaskService {
         }
         console.log(task);
         this.tasks.set(taskId, task); //adds or updates
-        return task
+        return task;
     }
 
     // Delete a task
     deleteTask(taskId) {
-        // Remove task from Map
-        // Return success status or deleted task
-    }
-
-    // Optional: reset all tasks
-    clearAllTasks() {
-        this.tasks.clear();
-        this.nextId = 1;
+        if (!this.tasks.delete(taskId)) {
+            throw new Error(`Task with id ${taskId} not found`);
+        }
+        return taskId;
     }
 
     // Optional: utility to generate unique IDs

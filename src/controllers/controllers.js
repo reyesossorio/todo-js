@@ -45,8 +45,8 @@ exports.updateTask = async (req, res, taskService) => {
     var id, title, description;
     try {
         id = parseInt(req.params.id, 10);
-        title = req.body.title; 
-        description = req.body.description; 
+        title = req.body.title;
+        description = req.body.description;
     } catch {
         res.status(400).send("bad request");
     }
@@ -55,6 +55,25 @@ exports.updateTask = async (req, res, taskService) => {
         res.status(200).json({
             status: "ok",
             task: task,
+        });
+    } catch (error) {
+        res.status(500).send("Internal server error");
+    }
+};
+
+exports.deleteTask = async (req, res, taskService) => {
+    var id;
+    try {
+        id = parseInt(req.params.id, 10);
+    } catch {
+        res.status(400).send("bad request");
+    }
+
+    try {
+        const taskId = taskService.deleteTask(id);
+        res.status(200).json({
+            status: "ok",
+            id: taskId,
         });
     } catch (error) {
         res.status(500).send("Internal server error");

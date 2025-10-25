@@ -23,15 +23,15 @@ The purporse of this simple task is to teach myself node.js and express.js in th
 
 # API endpoints
 
-- GET /todos — list all todos
+- GET /task — list all todos
 
-- GET /todos/:id — get a single todo
+- GET /task/:id — get a single todo
 
-- POST /todos — create a new todo
+- POST /task — create a new todo
 
-- PUT /todos/:id — update an existing todo
+- PATCH /task/:id — update an existing todo
 
-- DELETE /todos/:id — remove a todo
+- DELETE /task/:id — remove a todo
 
 # Model
 
